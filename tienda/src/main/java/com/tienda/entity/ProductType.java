@@ -18,7 +18,7 @@ public class ProductType {
 	@Column(name = "id")
 	private Integer id;
 
-	@Column(name = "description", nullable = false)
+	@Column(name = "description", nullable = false, length=45)
 	private String description;
 
 	@Column(name = "tax_rate", nullable = false)

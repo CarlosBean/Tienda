@@ -30,8 +30,8 @@ public class Invoice {
 	@Column(name = "totalIva", nullable = false)
 	private double totalIva;
 
-	@ManyToOne
-	@JoinColumn(name = "id_cashier", referencedColumnName = "id")
+	@ManyToOne(optional=false)
+	@JoinColumn(name = "id_cashier", referencedColumnName = "id", nullable=false)
 	private User idCashier;
 
 	@ManyToOne

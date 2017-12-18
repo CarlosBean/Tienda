@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
 
 @Entity
 @Table(name = "roles")
@@ -19,8 +18,7 @@ public class Rol {
 	@Column(name = "id")
 	private Integer id;
 
-	@Max(10)
-	@Column(name = "description")
+	@Column(name = "description", length=10, nullable=false)
 	private String description;
 
 	@ManyToMany(mappedBy = "rolList")

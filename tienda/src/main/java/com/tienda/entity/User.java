@@ -21,16 +21,19 @@ public class User {
 	@Column(name = "id")
 	private Integer id;
 
-	@Column(name = "document_num", nullable = false, unique = true)
+	@Column(name = "document_num", nullable = false, unique = true, length=20)
 	private String documentNum;
+	
+	@Column(name="password", nullable=true, length=100)
+	private String password;
 
-	@Column(name = "first_name", nullable = false)
+	@Column(name = "first_name", nullable = false, length=45)
 	private String firstName;
 
-	@Column(name = "last_name", nullable = false)
+	@Column(name = "last_name", nullable = false, length=45)
 	private String lastName;
 
-	@Column(name = "telephone", nullable = false)
+	@Column(name = "telephone", nullable = false, length=20)
 	private String telephone;
 
 	@OneToMany(mappedBy = "idCashier")

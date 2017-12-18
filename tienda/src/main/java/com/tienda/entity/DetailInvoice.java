@@ -23,12 +23,12 @@ public class DetailInvoice {
 	@Column(name = "subtotal", nullable = false)
 	private double subtotal;
 
-	@ManyToOne
-	@JoinColumn(name = "id_invoices", referencedColumnName = "id")
+	@ManyToOne(optional=false)
+	@JoinColumn(name = "id_invoices", referencedColumnName = "id", nullable=false)
 	private Invoice idInvoice;
 
-	@ManyToOne
-	@JoinColumn(name = "id_products", referencedColumnName = "id")
+	@ManyToOne(optional=false)
+	@JoinColumn(name = "id_products", referencedColumnName = "id", nullable=false)
 	private Product idProduct;
 
 	public DetailInvoice() {
