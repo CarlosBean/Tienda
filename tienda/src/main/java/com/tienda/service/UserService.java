@@ -1,4 +1,4 @@
-package com.tienda.service.impl;
+package com.tienda.service;
 
 import java.util.ArrayList;
 import java.util.List;

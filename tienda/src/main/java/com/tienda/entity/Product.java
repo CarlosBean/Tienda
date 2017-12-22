@@ -108,6 +108,11 @@ public class Product {
 
 	public void setDetailInvoiceList(List<DetailInvoice> detailInvoiceList) {
 		this.detailInvoiceList = detailInvoiceList;
-	};
+	}
 
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", basePrice=" + basePrice + ", stock=" + stock + ", minAmount="
+				+ minAmount + ", idProductType=" + idProductType + "]";
+	};
 }
