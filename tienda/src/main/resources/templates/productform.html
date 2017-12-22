@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Product Form</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Formulario de Producto</h1>
+			<br/>
+			<form action="#" th:action="@{/products/addproduct}" th:object="${productModel}" method="post">
+			<input type="hidden" th:field="*{id}"/>
+				Nombre del producto: <input type="text" class="form-control" th:field="*{name}" th:value="*{name}"></input>
+				<br/>
+				Precio base: <input type="text" class="form-control" th:field="*{basePrice}" th:value="*{basePrice}"></input>
+				<br/>
+				Stock: <input type="text" class="form-control" th:field="*{stock}" th:value="*{stock}"></input>
+				<br/>
+				Cantidad minima: <input type="text" class="form-control" th:field="*{minAmount}" th:value="*{minAmount}"></input>
+				<br/>
+				Tipo de producto: 
+				<select class="form-control" th:field="*{idProductType.id}">
+					<option th:each="productType : ${productTypes}" 
+						th:text="${productType.description}"
+						th:value="${productType.id}">
+					</option>
+				</select>
+				<br/>
+				<br/>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Aceptar
+				</button>
+			</form>
+			<a href="#" th:href="@{/products/showproducts}">
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					Cancelar
+				</button>
+			</a>
+		</div>
+	</div>
+
+</body>
+</html>
