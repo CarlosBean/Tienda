@@ -68,6 +68,11 @@ public class ProductType {
 
 	public void setProductList(List<Product> productList) {
 		this.productList = productList;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductType [id=" + id + ", description=" + description + ", taxRate=" + taxRate + "]";
 	};
 
 }
