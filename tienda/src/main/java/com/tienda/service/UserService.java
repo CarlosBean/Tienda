@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.JDBCException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
@@ -47,8 +48,40 @@ public class UserService implements UserDetailsService {
 	private List<GrantedAuthority> buildAuthorities(List<Rol> roles) {
 		List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
 		for (Rol rol : roles) {
-			auths.add(new SimpleGrantedAuthority(rol.getDescription()));
+			auths.add(new SimpleGrantedAuthority(rol.getId()));
 		}
 		return new ArrayList<GrantedAuthority>(auths);
+	}
+	
+	public List<com.tienda.entity.User> listAllUsers(){
+		LOG.info("METHOD: listAllUsers()");
+		return userRepository.findAll();
+	}
+	
+	public com.tienda.entity.User findUserById(Integer id) {
+		LOG.info("METHOD: findUserById() -- PARAMS: " + id);
+		return userRepository.findById(id);
+	}
+	
+	public void removeUser(Integer id) {
+		LOG.info("METHOD: removeUser() -- PARAMS: " + id);
+		com.tienda.entity.User user = findUserById(id);
+		if(user != null) {
+			userRepository.delete(id);
+		}
+	}
+	
+	public com.tienda.entity.User addClient(com.tienda.entity.User user){
+		LOG.info("METHOD: addClient() -- PARAMS: " + user.toString());
+		com.tienda.entity.User foundUser = userRepository.findByDocumentNum(user.getDocumentNum());
+		if(foundUser == null) {
+			user.setRolList(new ArrayList<Rol>());
+			user.getRolList().add(new Rol("ROLE_CLIENT"));
+			userRepository.save(user);
+		}else {
+			LOG.error("El numero de documento" + user.getDocumentNum()+ " ya se encuentra registrado.");
+		}
+		
+		return user;
 	}
 }

@@ -19,7 +19,7 @@
 		<div class="container">
 			<h1>Formulario de Cliente</h1>
 			<br/>
-			<form action="#" th:action="@{/clients/addclient}" th:object="${clientModel}" method="post">
+			<form action="#" th:action="@{/clients/addclient}" th:object="${clientModel}" method="POST">
 			<input type="hidden" th:field="*{id}"/>
 				Número de documento: <input type="text" class="form-control" th:field="*{documentNum}" th:value="*{documentNum}"></input>
 				<br/>
