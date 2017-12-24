@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -14,11 +13,10 @@ import javax.persistence.Table;
 public class Rol {
 
 	@Id
-	@GeneratedValue
-	@Column(name = "id")
-	private Integer id;
+	@Column(name = "id", length = 15)
+	private String id;
 
-	@Column(name = "description", length=10, nullable=false)
+	@Column(name = "description", length = 20, nullable = false)
 	private String description;
 
 	@ManyToMany(mappedBy = "rolList")
@@ -27,18 +25,22 @@ public class Rol {
 	public Rol() {
 	}
 
-	public Rol(Integer id, String description, List<User> userList) {
+	public Rol(String id) {
+		this.id = id;
+	}
+
+	public Rol(String id, String description, List<User> userList) {
 		super();
 		this.id = id;
 		this.description = description;
 		this.userList = userList;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
