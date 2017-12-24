@@ -29,7 +29,7 @@ public class LoginController {
 	@GetMapping({"/loginsuccess","/"})
 	public String loginCheck() {
 		LOG.info("METHOD: loginCheck()");
-		return "redirect:/products/showproducts";
+		return "redirect:/main/showmain";
 	}
 
 }
