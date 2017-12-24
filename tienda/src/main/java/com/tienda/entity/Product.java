@@ -19,6 +19,9 @@ public class Product {
 	@GeneratedValue
 	@Column(name = "id")
 	private Integer id;
+	
+	@Column(name="product_num", unique=true, length=10)
+	private String productNum;
 
 	@Column(name = "name", nullable = false, length=45)
 	private String name;
@@ -42,11 +45,12 @@ public class Product {
 	public Product() {
 	}
 
-	public Product(Integer id, String name, double basePrice, int stock, int minAmount, ProductType idProductType,
+	public Product(Integer id, String name, String productNum, double basePrice, int stock, int minAmount, ProductType idProductType,
 			List<DetailInvoice> detailInvoiceList) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.productNum = productNum;
 		this.basePrice = basePrice;
 		this.stock = stock;
 		this.minAmount = minAmount;
@@ -110,9 +114,17 @@ public class Product {
 		this.detailInvoiceList = detailInvoiceList;
 	}
 
+	public String getProductNum() {
+		return productNum;
+	}
+
+	public void setProductNum(String productNum) {
+		this.productNum = productNum;
+	}
+
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", basePrice=" + basePrice + ", stock=" + stock + ", minAmount="
-				+ minAmount + ", idProductType=" + idProductType + "]";
-	};
+		return "Product [id=" + id + ", productNum=" + productNum + ", name=" + name + ", basePrice=" + basePrice
+				+ ", stock=" + stock + ", minAmount=" + minAmount + ", idProductType=" + idProductType + "]";
+	}
 }

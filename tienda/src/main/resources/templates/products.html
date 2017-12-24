@@ -22,6 +22,7 @@
 			<table class="table">
 				<thead>
 					<tr>
+						<th>Código</th>
 						<th>Nombre</th>
 						<th>Precio Base</th>
 						<th>Stock</th>
@@ -32,6 +33,7 @@
 				</thead>
 				<tbody>
 					<tr th:each="product : ${products}">
+						<td th:text="${product.productNum}"></td>
 						<td th:text="${product.name}"></td>
 						<td th:text="${product.basePrice}"></td>
 						<td th:text="${product.stock}"></td>

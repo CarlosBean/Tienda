@@ -13,5 +13,6 @@ public interface ProductRepository extends JpaRepository<Product, Serializable>{
 	
 	public abstract Product findById(Integer id);
 	public abstract Product findByName(String name);
+	public abstract Product findByProductNum(String productNum);
 	public abstract List<Product> findAll();
 }

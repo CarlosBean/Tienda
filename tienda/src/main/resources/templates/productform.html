@@ -21,6 +21,8 @@
 			<br/>
 			<form action="#" th:action="@{/products/addproduct}" th:object="${productModel}" method="post">
 			<input type="hidden" th:field="*{id}"/>
+				Código del producto: <input type="text" class="form-control" th:field="*{productNum}" th:value="*{productNum}"></input>
+				<br/>
 				Nombre del producto: <input type="text" class="form-control" th:field="*{name}" th:value="*{name}"></input>
 				<br/>
 				Precio base: <input type="text" class="form-control" th:field="*{basePrice}" th:value="*{basePrice}"></input>

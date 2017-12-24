@@ -39,8 +39,13 @@ public class ProductService {
 	}
 
 	public Product addProduct(Product product) {
-		LOG.info("METHOD: findProductById() -- PARAMS: " + product.toString());
-		productRepository.save(product);
+		LOG.info("METHOD: addProduct() -- PARAMS: " + product.toString());
+		Product foundProduct = productRepository.findByProductNum(product.getProductNum());
+		if (foundProduct == null) {
+			productRepository.save(product);
+		} else {
+			LOG.error("El codigo de producto " + product.getProductNum() + " ya se encuentra registrado.");
+		}
 		return product;
 	}
 }
